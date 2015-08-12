@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dfa3306ea546454aa27d1dae3dc92059" Name="Diagram1">
+        <EntityTypeShape EntityType="HealthPlanDBModel.Deductible" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthPlanDBModel.HealthPlan" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthPlanDBModel.MajorMedical" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthPlanDBModel.Organization" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthPlanDBModel.PreventiveCare" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <AssociationConnector Association="HealthPlanDBModel.FK_HealthPlan_DedId" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthPlanDBModel.FK_HealthPlan_MajorMedicalId" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthPlanDBModel.FK_HealthPlan_PreventiveCare" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HealthPlanDBModel.LoginUser" Width="1.5" PointX="5.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
