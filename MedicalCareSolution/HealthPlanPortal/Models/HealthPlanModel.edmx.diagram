@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="HealthPlanDBModel.Deductible" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="HealthPlanDBModel.HealthPlan" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="HealthPlanDBModel.MajorMedical" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthPlanDBModel.Organization" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthPlanDBModel.Organization" Width="3.25" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HealthPlanDBModel.PreventiveCare" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
         <AssociationConnector Association="HealthPlanDBModel.FK_HealthPlan_DedId" ManuallyRouted="false" />
         <AssociationConnector Association="HealthPlanDBModel.FK_HealthPlan_MajorMedicalId" ManuallyRouted="false" />

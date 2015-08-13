@@ -58,11 +58,15 @@
           <Key>
             <PropertyRef Name="Organization Id" />
           </Key>
-          <Property Name="Organization Id" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="OrganizationName" Type="nchar" MaxLength="10" />
+          <Property Name="Organization Id" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="OrganizationName" Type="nvarchar" MaxLength="50" />
           <Property Name="OrganizationDescription" Type="nvarchar" MaxLength="50" />
-          <Property Name="OrganizationPhoneNumber" Type="nchar" MaxLength="10" />
-          <Property Name="OrganizationAddressId" Type="nchar" MaxLength="10" />
+          <Property Name="OrganizationPhoneNumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="OrganizationEmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrganizationAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrganizationCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrganizationState" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrganizationZip" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PreventiveCare">
           <Key>
@@ -182,11 +186,15 @@
           <Key>
             <PropertyRef Name="Organization_Id" />
           </Key>
-          <Property Name="Organization_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="OrganizationName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Organization_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrganizationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OrganizationDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OrganizationPhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="OrganizationAddressId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="OrganizationPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="OrganizationEmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrganizationAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrganizationCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrganizationState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrganizationZip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PreventiveCare">
           <Key>
@@ -315,11 +323,15 @@
           <EntitySetMapping Name="Organizations">
             <EntityTypeMapping TypeName="HealthPlanDBModel.Organization">
               <MappingFragment StoreEntitySet="Organization">
+                <ScalarProperty Name="OrganizationZip" ColumnName="OrganizationZip" />
+                <ScalarProperty Name="OrganizationState" ColumnName="OrganizationState" />
+                <ScalarProperty Name="OrganizationCity" ColumnName="OrganizationCity" />
+                <ScalarProperty Name="OrganizationAddress" ColumnName="OrganizationAddress" />
+                <ScalarProperty Name="OrganizationEmailAddress" ColumnName="OrganizationEmailAddress" />
                 <ScalarProperty Name="Organization_Id" ColumnName="Organization Id" />
                 <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
                 <ScalarProperty Name="OrganizationDescription" ColumnName="OrganizationDescription" />
                 <ScalarProperty Name="OrganizationPhoneNumber" ColumnName="OrganizationPhoneNumber" />
-                <ScalarProperty Name="OrganizationAddressId" ColumnName="OrganizationAddressId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

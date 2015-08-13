@@ -49,11 +49,15 @@
     <Key>
       <PropertyRef Name="Organization_Id" />
     </Key>
-    <Property Name="Organization_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="OrganizationName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Organization_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrganizationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="OrganizationDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="OrganizationPhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="OrganizationAddressId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="OrganizationPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="OrganizationEmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrganizationAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrganizationCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrganizationState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrganizationZip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="PreventiveCare">
     <Key>

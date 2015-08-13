@@ -53,11 +53,15 @@
     <Key>
       <PropertyRef Name="Organization Id" />
     </Key>
-    <Property Name="Organization Id" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="OrganizationName" Type="nchar" MaxLength="10" />
+    <Property Name="Organization Id" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="OrganizationName" Type="nvarchar" MaxLength="50" />
     <Property Name="OrganizationDescription" Type="nvarchar" MaxLength="50" />
-    <Property Name="OrganizationPhoneNumber" Type="nchar" MaxLength="10" />
-    <Property Name="OrganizationAddressId" Type="nchar" MaxLength="10" />
+    <Property Name="OrganizationPhoneNumber" Type="nvarchar" MaxLength="10" />
+    <Property Name="OrganizationEmailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="OrganizationAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="OrganizationCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="OrganizationState" Type="nvarchar" MaxLength="50" />
+    <Property Name="OrganizationZip" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="PreventiveCare">
     <Key>

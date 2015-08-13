@@ -46,7 +46,7 @@ namespace HealthPlanPortal.Controllers
         {
             if (Session["LoggedUserID"] != null)
             { 
-                return RedirectToAction("CreateOrganisation"); 
+                return RedirectToAction("Index","Organizations"); 
             }
 
             else

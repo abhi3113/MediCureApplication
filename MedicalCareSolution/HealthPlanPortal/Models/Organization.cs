@@ -18,6 +18,10 @@ namespace HealthPlanPortal.Models
         public string OrganizationName { get; set; }
         public string OrganizationDescription { get; set; }
         public string OrganizationPhoneNumber { get; set; }
-        public string OrganizationAddressId { get; set; }
+        public string OrganizationEmailAddress { get; set; }
+        public string OrganizationAddress { get; set; }
+        public string OrganizationCity { get; set; }
+        public string OrganizationState { get; set; }
+        public string OrganizationZip { get; set; }
     }
 }

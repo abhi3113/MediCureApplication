@@ -74,4 +74,3 @@ C:\Users\papireddy\Desktop\MediCureApplication\MedicalCareSolution\HealthPlanPor
 C:\Users\papireddy\Desktop\MediCureApplication\MedicalCareSolution\HealthPlanPortal\bin\Antlr3.Runtime.pdb
 C:\Users\papireddy\Desktop\MediCureApplication\MedicalCareSolution\HealthPlanPortal\bin\Newtonsoft.Json.xml
 C:\Users\papireddy\Desktop\MediCureApplication\MedicalCareSolution\HealthPlanPortal\bin\System.Web.Optimization.xml
-C:\Users\papireddy\Desktop\MediCureApplication\MedicalCareSolution\HealthPlanPortal\obj\Debug\HealthPlanPortal.csprojResolveAssemblyReference.cache

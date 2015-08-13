@@ -1,0 +1,89 @@
+﻿@model HealthPlanPortal.Models.Organization
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div border="1" style="font-family:Arial">
+        <h4>Organization</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayName("Name")
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrganizationName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayName("Description")
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrganizationDescription)
+            </dd>
+            <dt>
+                @Html.DisplayName("Email Address")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OrganizationEmailAddress)
+            </dd>
+    
+            <dt>
+                @Html.DisplayName("Phone Number")
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrganizationPhoneNumber)
+            </dd>
+    
+            <dt>
+                @Html.DisplayName("Address")
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrganizationAddress)
+            </dd>
+            <dt>
+                @Html.DisplayName("City")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OrganizationCity)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("State")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OrganizationState)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Zip Code")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OrganizationZip)
+            </dd>
+
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Organization_Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

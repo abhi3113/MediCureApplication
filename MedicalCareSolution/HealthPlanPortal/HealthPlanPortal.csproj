@@ -152,7 +152,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DeductiblesController.cs" />
+    <Compile Include="Controllers\HealthPlansController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MajorMedicalsController.cs" />
+    <Compile Include="Controllers\OrganizationsController.cs" />
+    <Compile Include="Controllers\PreventiveCaresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -207,6 +212,32 @@
     <Content Include="Models\HealthPlanModel.edmx.diagram">
       <DependentUpon>HealthPlanModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Organizations\Create.cshtml" />
+    <Content Include="Views\Organizations\Delete.cshtml" />
+    <Content Include="Views\Organizations\Details.cshtml" />
+    <Content Include="Views\Organizations\Edit.cshtml" />
+    <Content Include="Views\Organizations\Index.cshtml" />
+    <Content Include="Views\Shared\_ViewStart.cshtml" />
+    <Content Include="Views\HealthPlans\Create.cshtml" />
+    <Content Include="Views\HealthPlans\Delete.cshtml" />
+    <Content Include="Views\HealthPlans\Details.cshtml" />
+    <Content Include="Views\HealthPlans\Edit.cshtml" />
+    <Content Include="Views\HealthPlans\Index.cshtml" />
+    <Content Include="Views\Deductibles\Create.cshtml" />
+    <Content Include="Views\Deductibles\Delete.cshtml" />
+    <Content Include="Views\Deductibles\Details.cshtml" />
+    <Content Include="Views\Deductibles\Edit.cshtml" />
+    <Content Include="Views\Deductibles\Index.cshtml" />
+    <Content Include="Views\PreventiveCares\Create.cshtml" />
+    <Content Include="Views\PreventiveCares\Delete.cshtml" />
+    <Content Include="Views\PreventiveCares\Details.cshtml" />
+    <Content Include="Views\PreventiveCares\Edit.cshtml" />
+    <Content Include="Views\PreventiveCares\Index.cshtml" />
+    <Content Include="Views\MajorMedicals\Create.cshtml" />
+    <Content Include="Views\MajorMedicals\Delete.cshtml" />
+    <Content Include="Views\MajorMedicals\Details.cshtml" />
+    <Content Include="Views\MajorMedicals\Edit.cshtml" />
+    <Content Include="Views\MajorMedicals\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

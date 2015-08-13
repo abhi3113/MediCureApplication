@@ -1,0 +1,136 @@
+﻿@model HealthPlanPortal.Models.Deductible
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Deductible</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DeductibleCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeductibleCode)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IndividualDedAmt)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IndividualDedAmt)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FamilyDedAmt)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FamilyDedAmt)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MaxDeductibleAmountPerIndividual)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MaxDeductibleAmountPerIndividual)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ServicesCoveredBeforeDeductibleMetBool)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ServicesCoveredBeforeDeductibleMetBool)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DeductibleIncdInOutOfPcktBool)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeductibleIncdInOutOfPcktBool)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AnnualLimitsPlanBool)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AnnualLimitsPlanBool)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AnnualPremium)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AnnualPremium)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CoinsuranceUpper)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CoinsuranceUpper)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CoinsuranceLower)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CoinsuranceLower)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AnnualLimitHigher)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AnnualLimitHigher)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AnnualLimitLower)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AnnualLimitLower)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalEstimatedCost)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TotalEstimatedCost)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

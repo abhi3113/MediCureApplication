@@ -1,0 +1,113 @@
+﻿@model IEnumerable<HealthPlanPortal.Models.Deductible>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeductibleCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IndividualDedAmt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FamilyDedAmt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxDeductibleAmountPerIndividual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServicesCoveredBeforeDeductibleMetBool)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeductibleIncdInOutOfPcktBool)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnualLimitsPlanBool)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnualPremium)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoinsuranceUpper)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoinsuranceLower)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnualLimitHigher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnualLimitLower)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalEstimatedCost)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeductibleCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IndividualDedAmt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FamilyDedAmt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxDeductibleAmountPerIndividual)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServicesCoveredBeforeDeductibleMetBool)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeductibleIncdInOutOfPcktBool)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnualLimitsPlanBool)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnualPremium)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoinsuranceUpper)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoinsuranceLower)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnualLimitHigher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnualLimitLower)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalEstimatedCost)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.DeductibleId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.DeductibleId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.DeductibleId })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
