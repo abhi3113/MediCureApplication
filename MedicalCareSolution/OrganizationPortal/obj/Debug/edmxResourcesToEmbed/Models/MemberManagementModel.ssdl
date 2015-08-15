@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MemberManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Address_Street1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address_Street2" Type="nchar" MaxLength="10" />
+    <Property Name="Address_City" Type="nchar" MaxLength="10" />
+    <Property Name="Address_State" Type="nchar" MaxLength="10" />
+    <Property Name="Address_Zip" Type="nchar" MaxLength="10" />
+    <Property Name="Address_Country" Type="nchar" MaxLength="10" />
+    <Property Name="Address_Email" Type="nchar" MaxLength="10" />
+    <Property Name="Address_Home_Phone" Type="nchar" MaxLength="10" />
+    <Property Name="Address_Work_Phone" Type="nchar" MaxLength="10" />
+    <Property Name="Address_Cell_phone" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Coverage">
+    <Key>
+      <PropertyRef Name="CoverageId" />
+    </Key>
+    <Property Name="CoverageId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="CoverageCode" Type="nchar" MaxLength="10" />
+    <Property Name="CoverageDescription" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Employee_First_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Employee_Last_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Employee_Middle_Name" Type="nchar" MaxLength="10" />
+    <Property Name="Employee_SSN" Type="nchar" MaxLength="10" />
+    <Property Name="Employee_DOB" Type="datetime2" Precision="7" />
+    <Property Name="Eomployee_Gender" Type="nchar" MaxLength="10" />
+    <Property Name="Employee_Address_Id" Type="nchar" MaxLength="10" />
+    <Property Name="Marital_Status_id" Type="nchar" MaxLength="10" />
+    <Property Name="Coverage_Id" Type="nchar" MaxLength="10" />
+    <Property Name="Primary_Care_Id" Type="nchar" MaxLength="10" />
+    <Property Name="PCP" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="EmployeePolicy">
+    <Key>
+      <PropertyRef Name="EmployeePolicyId" />
+    </Key>
+    <Property Name="EmployeePolicyId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="EmployeeId" Type="nchar" MaxLength="10" />
+    <Property Name="EnrollmentTypeId" Type="nchar" MaxLength="10" />
+    <Property Name="HealthPlanId" Type="nchar" MaxLength="10" />
+    <Property Name="OrganizationId" Type="nchar" MaxLength="10" />
+    <Property Name="DateOfHire" Type="datetime" />
+    <Property Name="QualifyingEventDate" Type="datetime" />
+    <Property Name="EffectiveDateOfCoverage" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Enrollment">
+    <Key>
+      <PropertyRef Name="EnrollmentTypeId" />
+    </Key>
+    <Property Name="EnrollmentTypeId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="EnrollmentTypeCode" Type="nchar" MaxLength="10" />
+    <Property Name="EnrollmentTypeDescription" Type="nvarchar(max)" />
+    <Property Name="EnrollmentType" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="GroupPolicyDetails">
+    <Key>
+      <PropertyRef Name="GroupPolicyId" />
+    </Key>
+    <Property Name="GroupPolicyId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="GroupNumber" Type="nchar" MaxLength="10" />
+    <Property Name="GroupDetails" Type="nchar" MaxLength="10" />
+    <Property Name="OrganizationId" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="MaritalStatus">
+    <Key>
+      <PropertyRef Name="MaritalStatusId" />
+    </Key>
+    <Property Name="MaritalStatusId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="MaritalStatusCode" Type="nchar" MaxLength="10" />
+    <Property Name="MaritalStatusDescription" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PrimaryCareProvider">
+    <Key>
+      <PropertyRef Name="PrimaryCareProviderId" />
+    </Key>
+    <Property Name="PrimaryCareProviderId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="PrimaryCareProviderFirstName" Type="nchar" MaxLength="10" />
+    <Property Name="PrimaryCareProviderLastName" Type="nchar" MaxLength="10" />
+    <Property Name="PrimaryCareProviderAddressId" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_Employee_Coverage">
+    <End Role="Coverage" Type="Self.Coverage" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coverage">
+        <PropertyRef Name="CoverageId" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Coverage_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Employee">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Employee_Address_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Marital">
+    <End Role="MaritalStatus" Type="Self.MaritalStatus" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaritalStatus">
+        <PropertyRef Name="MaritalStatusId" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Marital_Status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_PrimaryCare">
+    <End Role="PrimaryCareProvider" Type="Self.PrimaryCareProvider" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrimaryCareProvider">
+        <PropertyRef Name="PrimaryCareProviderId" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Primary_Care_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeePolicy_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="EmployeePolicy" Type="Self.EmployeePolicy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="EmployeePolicy">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeePolicy_EnrollementTypeId">
+    <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="0..1" />
+    <End Role="EmployeePolicy" Type="Self.EmployeePolicy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Enrollment">
+        <PropertyRef Name="EnrollmentTypeId" />
+      </Principal>
+      <Dependent Role="EmployeePolicy">
+        <PropertyRef Name="EnrollmentTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrimaryCareProvider_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="PrimaryCareProvider" Type="Self.PrimaryCareProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="PrimaryCareProvider">
+        <PropertyRef Name="PrimaryCareProviderAddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MemberManagementModelStoreContainer">
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Coverage" EntityType="Self.Coverage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeePolicy" EntityType="Self.EmployeePolicy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Enrollment" EntityType="Self.Enrollment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupPolicyDetails" EntityType="Self.GroupPolicyDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MaritalStatus" EntityType="Self.MaritalStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrimaryCareProvider" EntityType="Self.PrimaryCareProvider" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Employee_Coverage" Association="Self.FK_Employee_Coverage">
+      <End Role="Coverage" EntitySet="Coverage" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Employee" Association="Self.FK_Employee_Employee">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Marital" Association="Self.FK_Employee_Marital">
+      <End Role="MaritalStatus" EntitySet="MaritalStatus" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_PrimaryCare" Association="Self.FK_Employee_PrimaryCare">
+      <End Role="PrimaryCareProvider" EntitySet="PrimaryCareProvider" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeePolicy_Employee" Association="Self.FK_EmployeePolicy_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="EmployeePolicy" EntitySet="EmployeePolicy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeePolicy_EnrollementTypeId" Association="Self.FK_EmployeePolicy_EnrollementTypeId">
+      <End Role="Enrollment" EntitySet="Enrollment" />
+      <End Role="EmployeePolicy" EntitySet="EmployeePolicy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrimaryCareProvider_Address" Association="Self.FK_PrimaryCareProvider_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="PrimaryCareProvider" EntitySet="PrimaryCareProvider" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

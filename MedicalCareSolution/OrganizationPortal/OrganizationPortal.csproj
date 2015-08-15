@@ -43,11 +43,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -90,12 +100,69 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Models\MemberManagementModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MemberManagementModel.edmx</DependentUpon>
+      <LastGenOutput>MemberManagementModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\MemberManagementModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MemberManagementModel.edmx</DependentUpon>
+      <LastGenOutput>MemberManagementModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AddressController.cs" />
+    <Compile Include="Controllers\CoverageController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\EmployeePolicyController.cs" />
+    <Compile Include="Controllers\EnrollmentController.cs" />
+    <Compile Include="Controllers\GroupPolicyDetailsController.cs" />
+    <Compile Include="Controllers\MaritalStatusController.cs" />
+    <Compile Include="Controllers\PrimaryCareProviderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Address.cs">
+      <DependentUpon>MemberManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Coverage.cs">
+      <DependentUpon>MemberManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>MemberManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeePolicy.cs">
+      <DependentUpon>MemberManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Enrollment.cs">
+      <DependentUpon>MemberManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GroupPolicyDetail.cs">
+      <DependentUpon>MemberManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaritalStatu.cs">
+      <DependentUpon>MemberManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MemberManagementModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MemberManagementModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MemberManagementModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MemberManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MemberManagementModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MemberManagementModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PrimaryCareProvider.cs">
+      <DependentUpon>MemberManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -104,6 +171,13 @@
     <Content Include="packages.config" />
     <Content Include="Views\ManageEmployees.cshtml" />
     <Content Include="Views\ManageEmployeesClaimHistory.cshtml" />
+    <EntityDeploy Include="Models\MemberManagementModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MemberManagementModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\MemberManagementModel.edmx.diagram">
+      <DependentUpon>MemberManagementModel.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -113,8 +187,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Address\" />
+    <Folder Include="Views\Coverage\" />
+    <Folder Include="Views\EmployeePolicy\" />
+    <Folder Include="Views\Employee\" />
+    <Folder Include="Views\Enrollment\" />
+    <Folder Include="Views\GroupPolicyDetails\" />
+    <Folder Include="Views\MaritalStatus\" />
+    <Folder Include="Views\PrimaryCareProvider\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
