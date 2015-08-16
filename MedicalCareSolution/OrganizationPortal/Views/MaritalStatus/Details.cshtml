@@ -1,0 +1,35 @@
+﻿@model OrganizationPortal.Models.MaritalStatu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/ManageEmployees.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MaritalStatu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaritalStatusCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaritalStatusCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaritalStatusDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaritalStatusDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaritalStatusId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

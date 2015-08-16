@@ -10,107 +10,107 @@ using OrganizationPortal.Models;
 
 namespace OrganizationPortal.Controllers
 {
-    public class GroupPolicyDetailsController : Controller
+    public class AddressesController : Controller
     {
         private MemberManagementEntities1 db = new MemberManagementEntities1();
 
-        // GET: GroupPolicyDetails
+        // GET: Addresses
         public ActionResult Index()
         {
-            return View(db.GroupPolicyDetails.ToList());
+            return View(db.Addresses.ToList());
         }
 
-        // GET: GroupPolicyDetails/Details/5
+        // GET: Addresses/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GroupPolicyDetail groupPolicyDetail = db.GroupPolicyDetails.Find(id);
-            if (groupPolicyDetail == null)
+            Address address = db.Addresses.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(groupPolicyDetail);
+            return View(address);
         }
 
-        // GET: GroupPolicyDetails/Create
+        // GET: Addresses/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: GroupPolicyDetails/Create
+        // POST: Addresses/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GroupPolicyId,GroupNumber,GroupDetails,OrganizationId")] GroupPolicyDetail groupPolicyDetail)
+        public ActionResult Create([Bind(Include = "AddressId,Address_Street1,Address_Street2,Address_City,Address_State,Address_Zip,Address_Country,Address_Email,Address_Home_Phone,Address_Work_Phone,Address_Cell_phone")] Address address)
         {
             if (ModelState.IsValid)
             {
-                db.GroupPolicyDetails.Add(groupPolicyDetail);
+                db.Addresses.Add(address);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(groupPolicyDetail);
+            return View(address);
         }
 
-        // GET: GroupPolicyDetails/Edit/5
+        // GET: Addresses/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GroupPolicyDetail groupPolicyDetail = db.GroupPolicyDetails.Find(id);
-            if (groupPolicyDetail == null)
+            Address address = db.Addresses.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(groupPolicyDetail);
+            return View(address);
         }
 
-        // POST: GroupPolicyDetails/Edit/5
+        // POST: Addresses/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GroupPolicyId,GroupNumber,GroupDetails,OrganizationId")] GroupPolicyDetail groupPolicyDetail)
+        public ActionResult Edit([Bind(Include = "AddressId,Address_Street1,Address_Street2,Address_City,Address_State,Address_Zip,Address_Country,Address_Email,Address_Home_Phone,Address_Work_Phone,Address_Cell_phone")] Address address)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(groupPolicyDetail).State = EntityState.Modified;
+                db.Entry(address).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(groupPolicyDetail);
+            return View(address);
         }
 
-        // GET: GroupPolicyDetails/Delete/5
+        // GET: Addresses/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GroupPolicyDetail groupPolicyDetail = db.GroupPolicyDetails.Find(id);
-            if (groupPolicyDetail == null)
+            Address address = db.Addresses.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(groupPolicyDetail);
+            return View(address);
         }
 
-        // POST: GroupPolicyDetails/Delete/5
+        // POST: Addresses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            GroupPolicyDetail groupPolicyDetail = db.GroupPolicyDetails.Find(id);
-            db.GroupPolicyDetails.Remove(groupPolicyDetail);
+            Address address = db.Addresses.Find(id);
+            db.Addresses.Remove(address);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

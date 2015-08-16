@@ -1,0 +1,35 @@
+﻿@model OrganizationPortal.Models.Coverage
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/ManageEmployees.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Coverage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CoverageCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoverageCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CoverageDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoverageDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CoverageId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

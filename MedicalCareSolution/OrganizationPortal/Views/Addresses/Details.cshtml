@@ -1,0 +1,99 @@
+﻿@model OrganizationPortal.Models.Address
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/ManageEmployees.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Address</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Street1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Street1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Street2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Street2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Zip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Zip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Home_Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Home_Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Work_Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Work_Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Cell_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Cell_phone)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AddressId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

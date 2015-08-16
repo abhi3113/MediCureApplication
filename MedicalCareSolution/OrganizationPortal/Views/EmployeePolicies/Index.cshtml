@@ -1,0 +1,70 @@
+﻿@model IEnumerable<OrganizationPortal.Models.EmployeePolicy>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/ManageEmployees.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HealthPlanId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfHire)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QualifyingEventDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EffectiveDateOfCoverage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.Employee_First_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Enrollment.EnrollmentTypeCode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HealthPlanId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfHire)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QualifyingEventDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EffectiveDateOfCoverage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.Employee_First_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Enrollment.EnrollmentTypeCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeePolicyId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EmployeePolicyId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeePolicyId })
+        </td>
+    </tr>
+}
+
+</table>

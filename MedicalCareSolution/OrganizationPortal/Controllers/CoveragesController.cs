@@ -10,107 +10,107 @@ using OrganizationPortal.Models;
 
 namespace OrganizationPortal.Controllers
 {
-    public class GroupPolicyDetailsController : Controller
+    public class CoveragesController : Controller
     {
         private MemberManagementEntities1 db = new MemberManagementEntities1();
 
-        // GET: GroupPolicyDetails
+        // GET: Coverages
         public ActionResult Index()
         {
-            return View(db.GroupPolicyDetails.ToList());
+            return View(db.Coverages.ToList());
         }
 
-        // GET: GroupPolicyDetails/Details/5
+        // GET: Coverages/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GroupPolicyDetail groupPolicyDetail = db.GroupPolicyDetails.Find(id);
-            if (groupPolicyDetail == null)
+            Coverage coverage = db.Coverages.Find(id);
+            if (coverage == null)
             {
                 return HttpNotFound();
             }
-            return View(groupPolicyDetail);
+            return View(coverage);
         }
 
-        // GET: GroupPolicyDetails/Create
+        // GET: Coverages/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: GroupPolicyDetails/Create
+        // POST: Coverages/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GroupPolicyId,GroupNumber,GroupDetails,OrganizationId")] GroupPolicyDetail groupPolicyDetail)
+        public ActionResult Create([Bind(Include = "CoverageId,CoverageCode,CoverageDescription")] Coverage coverage)
         {
             if (ModelState.IsValid)
             {
-                db.GroupPolicyDetails.Add(groupPolicyDetail);
+                db.Coverages.Add(coverage);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(groupPolicyDetail);
+            return View(coverage);
         }
 
-        // GET: GroupPolicyDetails/Edit/5
+        // GET: Coverages/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GroupPolicyDetail groupPolicyDetail = db.GroupPolicyDetails.Find(id);
-            if (groupPolicyDetail == null)
+            Coverage coverage = db.Coverages.Find(id);
+            if (coverage == null)
             {
                 return HttpNotFound();
             }
-            return View(groupPolicyDetail);
+            return View(coverage);
         }
 
-        // POST: GroupPolicyDetails/Edit/5
+        // POST: Coverages/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GroupPolicyId,GroupNumber,GroupDetails,OrganizationId")] GroupPolicyDetail groupPolicyDetail)
+        public ActionResult Edit([Bind(Include = "CoverageId,CoverageCode,CoverageDescription")] Coverage coverage)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(groupPolicyDetail).State = EntityState.Modified;
+                db.Entry(coverage).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(groupPolicyDetail);
+            return View(coverage);
         }
 
-        // GET: GroupPolicyDetails/Delete/5
+        // GET: Coverages/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GroupPolicyDetail groupPolicyDetail = db.GroupPolicyDetails.Find(id);
-            if (groupPolicyDetail == null)
+            Coverage coverage = db.Coverages.Find(id);
+            if (coverage == null)
             {
                 return HttpNotFound();
             }
-            return View(groupPolicyDetail);
+            return View(coverage);
         }
 
-        // POST: GroupPolicyDetails/Delete/5
+        // POST: Coverages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            GroupPolicyDetail groupPolicyDetail = db.GroupPolicyDetails.Find(id);
-            db.GroupPolicyDetails.Remove(groupPolicyDetail);
+            Coverage coverage = db.Coverages.Find(id);
+            db.Coverages.Remove(coverage);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

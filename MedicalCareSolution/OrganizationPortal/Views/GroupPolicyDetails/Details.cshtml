@@ -1,0 +1,43 @@
+﻿@model OrganizationPortal.Models.GroupPolicyDetail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/ManageEmployees.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GroupPolicyDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GroupPolicyId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

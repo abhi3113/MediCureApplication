@@ -110,18 +110,26 @@
       <DependentUpon>MemberManagementModel.edmx</DependentUpon>
       <LastGenOutput>MemberManagementModel.cs</LastGenOutput>
     </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AddressController.cs" />
-    <Compile Include="Controllers\CoverageController.cs" />
-    <Compile Include="Controllers\EmployeeController.cs" />
-    <Compile Include="Controllers\EmployeePolicyController.cs" />
-    <Compile Include="Controllers\EnrollmentController.cs" />
+    <Compile Include="Controllers\AddressesController.cs" />
+    <Compile Include="Controllers\CoveragesController.cs" />
+    <Compile Include="Controllers\EmployeePoliciesController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\EnrollmentsController.cs" />
     <Compile Include="Controllers\GroupPolicyDetailsController.cs" />
     <Compile Include="Controllers\MaritalStatusController.cs" />
-    <Compile Include="Controllers\PrimaryCareProviderController.cs" />
+    <Compile Include="Controllers\PrimaryCareProvidersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -178,6 +186,47 @@
     <Content Include="Models\MemberManagementModel.edmx.diagram">
       <DependentUpon>MemberManagementModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Addresses\Create.cshtml" />
+    <Content Include="Views\Addresses\Delete.cshtml" />
+    <Content Include="Views\Addresses\Details.cshtml" />
+    <Content Include="Views\Addresses\Edit.cshtml" />
+    <Content Include="Views\Addresses\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Coverages\Create.cshtml" />
+    <Content Include="Views\Coverages\Delete.cshtml" />
+    <Content Include="Views\Coverages\Details.cshtml" />
+    <Content Include="Views\Coverages\Edit.cshtml" />
+    <Content Include="Views\Coverages\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\EmployeePolicies\Create.cshtml" />
+    <Content Include="Views\EmployeePolicies\Delete.cshtml" />
+    <Content Include="Views\EmployeePolicies\Details.cshtml" />
+    <Content Include="Views\EmployeePolicies\Edit.cshtml" />
+    <Content Include="Views\EmployeePolicies\Index.cshtml" />
+    <Content Include="Views\Enrollments\Create.cshtml" />
+    <Content Include="Views\Enrollments\Delete.cshtml" />
+    <Content Include="Views\Enrollments\Details.cshtml" />
+    <Content Include="Views\Enrollments\Edit.cshtml" />
+    <Content Include="Views\Enrollments\Index.cshtml" />
+    <Content Include="Views\GroupPolicyDetails\Create.cshtml" />
+    <Content Include="Views\GroupPolicyDetails\Delete.cshtml" />
+    <Content Include="Views\GroupPolicyDetails\Details.cshtml" />
+    <Content Include="Views\GroupPolicyDetails\Edit.cshtml" />
+    <Content Include="Views\GroupPolicyDetails\Index.cshtml" />
+    <Content Include="Views\MaritalStatus\Create.cshtml" />
+    <Content Include="Views\MaritalStatus\Delete.cshtml" />
+    <Content Include="Views\MaritalStatus\Details.cshtml" />
+    <Content Include="Views\MaritalStatus\Edit.cshtml" />
+    <Content Include="Views\MaritalStatus\Index.cshtml" />
+    <Content Include="Views\PrimaryCareProviders\Create.cshtml" />
+    <Content Include="Views\PrimaryCareProviders\Delete.cshtml" />
+    <Content Include="Views\PrimaryCareProviders\Details.cshtml" />
+    <Content Include="Views\PrimaryCareProviders\Edit.cshtml" />
+    <Content Include="Views\PrimaryCareProviders\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -187,14 +236,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Address\" />
-    <Folder Include="Views\Coverage\" />
-    <Folder Include="Views\EmployeePolicy\" />
-    <Folder Include="Views\Employee\" />
-    <Folder Include="Views\Enrollment\" />
-    <Folder Include="Views\GroupPolicyDetails\" />
-    <Folder Include="Views\MaritalStatus\" />
-    <Folder Include="Views\PrimaryCareProvider\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

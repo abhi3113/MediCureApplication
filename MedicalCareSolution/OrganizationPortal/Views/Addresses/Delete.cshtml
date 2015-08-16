@@ -1,0 +1,105 @@
+﻿@model OrganizationPortal.Models.Address
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/ManageEmployees.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Address</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Street1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Street1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Street2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Street2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Zip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Zip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Home_Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Home_Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Work_Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Work_Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Cell_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Cell_phone)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

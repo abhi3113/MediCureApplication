@@ -1,0 +1,75 @@
+﻿@model OrganizationPortal.Models.EmployeePolicy
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/ManageEmployees.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EmployeePolicy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HealthPlanId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HealthPlanId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfHire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfHire)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QualifyingEventDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QualifyingEventDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EffectiveDateOfCoverage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EffectiveDateOfCoverage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Employee_First_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Employee_First_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Enrollment.EnrollmentTypeCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Enrollment.EnrollmentTypeCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeePolicyId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
