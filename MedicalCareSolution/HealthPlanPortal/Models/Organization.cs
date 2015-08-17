@@ -11,17 +11,29 @@ namespace HealthPlanPortal.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Organization
     {
-        public string Organization_Id { get; set; }
+        [Display(Name = "ID")]
+        public int OrganizationId { get; set; }
+        [Display(Name = "Code")]
+        public string OrganizationCode { get; set; }
+        [Display(Name = "Name")]
         public string OrganizationName { get; set; }
+        [Display(Name = "Description")]
         public string OrganizationDescription { get; set; }
+        [Display(Name = "Phone Number")]
         public string OrganizationPhoneNumber { get; set; }
+        [Display(Name = "Email Address")]
         public string OrganizationEmailAddress { get; set; }
+        [Display(Name = "Address")]
         public string OrganizationAddress { get; set; }
+        [Display(Name = "City")]
         public string OrganizationCity { get; set; }
+        [Display(Name = "State")]
         public string OrganizationState { get; set; }
+        [Display(Name = "zip")]
         public string OrganizationZip { get; set; }
     }
 }

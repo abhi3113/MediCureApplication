@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="DeductibleId" />
     </Key>
-    <Property Name="DeductibleId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="DeductibleId" Type="int" Nullable="false" />
     <Property Name="DeductibleCode" Type="nchar" MaxLength="10" />
     <Property Name="IndividualDedAmt" Type="decimal" Precision="18" Scale="0" />
     <Property Name="FamilyDedAmt" Type="decimal" Precision="18" Scale="0" />
@@ -26,11 +26,18 @@
     <Property Name="HealthPlanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="HealthPlanCode" Type="nchar" MaxLength="10" />
     <Property Name="HealthPlanDescription" Type="nvarchar" MaxLength="50" />
-    <Property Name="DeductibleId" Type="nchar" MaxLength="10" />
-    <Property Name="PreventiveCareId" Type="nchar" MaxLength="10" />
-    <Property Name="MajorMedicalId" Type="nchar" MaxLength="10" />
     <Property Name="PCPrequiredBool" Type="bit" />
     <Property Name="PCPNetworkBool" Type="bit" />
+  </EntityType>
+  <EntityType Name="HealthPlanDetails">
+    <Key>
+      <PropertyRef Name="HealthPlanDetailsId" />
+    </Key>
+    <Property Name="HealthPlanDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HealthPlanId" Type="int" Nullable="false" />
+    <Property Name="DeductibleId" Type="int" Nullable="false" />
+    <Property Name="PreventiveCareId" Type="int" />
+    <Property Name="MajorMedicalId" Type="int" />
   </EntityType>
   <EntityType Name="LoginUser">
     <Key>
@@ -45,15 +52,16 @@
     <Key>
       <PropertyRef Name="MajorMedicalId" />
     </Key>
-    <Property Name="MajorMedicalId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="MajorMedicalId" Type="int" Nullable="false" />
     <Property Name="MajorMedicalProvideListBool" Type="bit" />
     <Property Name="MajorMedicalDescription" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Organization">
     <Key>
-      <PropertyRef Name="Organization Id" />
+      <PropertyRef Name="OrganizationId" />
     </Key>
-    <Property Name="Organization Id" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationCode" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="OrganizationName" Type="nvarchar" MaxLength="50" />
     <Property Name="OrganizationDescription" Type="nvarchar" MaxLength="50" />
     <Property Name="OrganizationPhoneNumber" Type="nvarchar" MaxLength="10" />
@@ -67,43 +75,55 @@
     <Key>
       <PropertyRef Name="PreventiveCareId" />
     </Key>
-    <Property Name="PreventiveCareId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="PreventiveCareId" Type="int" Nullable="false" />
     <Property Name="PhysicalExamLimit" Type="decimal" Precision="18" Scale="0" />
     <Property Name="RoutinePediatricCareLimit" Type="decimal" Precision="18" Scale="0" />
     <Property Name="ImmunizationLimit" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
-  <Association Name="FK_HealthPlan_DedId">
-    <End Role="Deductible" Type="Self.Deductible" Multiplicity="0..1" />
-    <End Role="HealthPlan" Type="Self.HealthPlan" Multiplicity="*" />
+  <Association Name="FK_HealthPlan_HealthPlanDetails">
+    <End Role="HealthPlan" Type="Self.HealthPlan" Multiplicity="1" />
+    <End Role="HealthPlanDetails" Type="Self.HealthPlanDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthPlan">
+        <PropertyRef Name="HealthPlanId" />
+      </Principal>
+      <Dependent Role="HealthPlanDetails">
+        <PropertyRef Name="HealthPlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HealthPlanDetails_DeductibleId">
+    <End Role="Deductible" Type="Self.Deductible" Multiplicity="1" />
+    <End Role="HealthPlanDetails" Type="Self.HealthPlanDetails" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Deductible">
         <PropertyRef Name="DeductibleId" />
       </Principal>
-      <Dependent Role="HealthPlan">
+      <Dependent Role="HealthPlanDetails">
         <PropertyRef Name="DeductibleId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_HealthPlan_MajorMedicalId">
+  <Association Name="FK_HealthPlanDetails_MajorMedicalId">
     <End Role="MajorMedical" Type="Self.MajorMedical" Multiplicity="0..1" />
-    <End Role="HealthPlan" Type="Self.HealthPlan" Multiplicity="*" />
+    <End Role="HealthPlanDetails" Type="Self.HealthPlanDetails" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MajorMedical">
         <PropertyRef Name="MajorMedicalId" />
       </Principal>
-      <Dependent Role="HealthPlan">
+      <Dependent Role="HealthPlanDetails">
         <PropertyRef Name="MajorMedicalId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_HealthPlan_PreventiveCare">
+  <Association Name="FK_HealthPlanDetails_PreventiveCare">
     <End Role="PreventiveCare" Type="Self.PreventiveCare" Multiplicity="0..1" />
-    <End Role="HealthPlan" Type="Self.HealthPlan" Multiplicity="*" />
+    <End Role="HealthPlanDetails" Type="Self.HealthPlanDetails" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PreventiveCare">
         <PropertyRef Name="PreventiveCareId" />
       </Principal>
-      <Dependent Role="HealthPlan">
+      <Dependent Role="HealthPlanDetails">
         <PropertyRef Name="PreventiveCareId" />
       </Dependent>
     </ReferentialConstraint>
@@ -111,21 +131,26 @@
   <EntityContainer Name="HealthPlanDBModelStoreContainer">
     <EntitySet Name="Deductible" EntityType="Self.Deductible" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HealthPlan" EntityType="Self.HealthPlan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HealthPlanDetails" EntityType="Self.HealthPlanDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoginUser" EntityType="Self.LoginUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MajorMedical" EntityType="Self.MajorMedical" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PreventiveCare" EntityType="Self.PreventiveCare" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_HealthPlan_DedId" Association="Self.FK_HealthPlan_DedId">
+    <AssociationSet Name="FK_HealthPlan_HealthPlanDetails" Association="Self.FK_HealthPlan_HealthPlanDetails">
+      <End Role="HealthPlan" EntitySet="HealthPlan" />
+      <End Role="HealthPlanDetails" EntitySet="HealthPlanDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HealthPlanDetails_DeductibleId" Association="Self.FK_HealthPlanDetails_DeductibleId">
       <End Role="Deductible" EntitySet="Deductible" />
-      <End Role="HealthPlan" EntitySet="HealthPlan" />
+      <End Role="HealthPlanDetails" EntitySet="HealthPlanDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK_HealthPlan_MajorMedicalId" Association="Self.FK_HealthPlan_MajorMedicalId">
+    <AssociationSet Name="FK_HealthPlanDetails_MajorMedicalId" Association="Self.FK_HealthPlanDetails_MajorMedicalId">
       <End Role="MajorMedical" EntitySet="MajorMedical" />
-      <End Role="HealthPlan" EntitySet="HealthPlan" />
+      <End Role="HealthPlanDetails" EntitySet="HealthPlanDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK_HealthPlan_PreventiveCare" Association="Self.FK_HealthPlan_PreventiveCare">
+    <AssociationSet Name="FK_HealthPlanDetails_PreventiveCare" Association="Self.FK_HealthPlanDetails_PreventiveCare">
       <End Role="PreventiveCare" EntitySet="PreventiveCare" />
-      <End Role="HealthPlan" EntitySet="HealthPlan" />
+      <End Role="HealthPlanDetails" EntitySet="HealthPlanDetails" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

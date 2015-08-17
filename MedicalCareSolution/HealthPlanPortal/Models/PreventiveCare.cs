@@ -11,21 +11,25 @@ namespace HealthPlanPortal.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class PreventiveCare
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PreventiveCare()
         {
-            this.HealthPlans = new HashSet<HealthPlan>();
+            this.HealthPlanDetails = new HashSet<HealthPlanDetail>();
         }
-    
-        public string PreventiveCareId { get; set; }
+        [Display(Name = "Preventive Care Id")]
+        public int PreventiveCareId { get; set; }
+        [Display(Name = "Physical Exam Limit")]
         public Nullable<decimal> PhysicalExamLimit { get; set; }
+        [Display(Name = "Routine Pediatric Care Limit")]
         public Nullable<decimal> RoutinePediatricCareLimit { get; set; }
+        [Display(Name = "Immunization Limit")]
         public Nullable<decimal> ImmunizationLimit { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HealthPlan> HealthPlans { get; set; }
+        public virtual ICollection<HealthPlanDetail> HealthPlanDetails { get; set; }
     }
 }

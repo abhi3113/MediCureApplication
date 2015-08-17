@@ -122,8 +122,25 @@
     <Content Include="Content\Justified-Nav.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Models\HealthPlanModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HealthPlanModel.edmx</DependentUpon>
+      <LastGenOutput>HealthPlanModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HealthPlanModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HealthPlanModel.edmx</DependentUpon>
+      <LastGenOutput>HealthPlanModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\HealthPlanModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HealthPlanModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HealthPlanModel.edmx.diagram">
+      <DependentUpon>HealthPlanModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -136,16 +153,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <None Include="Scripts\_references.js" />
-    <Content Include="Models\HealthPlanModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HealthPlanModel.edmx</DependentUpon>
-      <LastGenOutput>HealthPlanModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\HealthPlanModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HealthPlanModel.edmx</DependentUpon>
-      <LastGenOutput>HealthPlanModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -161,14 +168,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoginUser.cs">
-      <DependentUpon>HealthPlanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Deductible.cs">
       <DependentUpon>HealthPlanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HealthPlan.cs">
+      <DependentUpon>HealthPlanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HealthPlanDetail.cs">
       <DependentUpon>HealthPlanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HealthPlanModel.Context.cs">
@@ -186,6 +192,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HealthPlanModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginUser.cs">
+      <DependentUpon>HealthPlanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MajorMedical.cs">
       <DependentUpon>HealthPlanModel.tt</DependentUpon>
     </Compile>
@@ -195,6 +204,7 @@
     <Compile Include="Models\PreventiveCare.cs">
       <DependentUpon>HealthPlanModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -205,39 +215,32 @@
     <Content Include="Views\Home\AfterLogin.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <EntityDeploy Include="Models\HealthPlanModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HealthPlanModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\HealthPlanModel.edmx.diagram">
-      <DependentUpon>HealthPlanModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Views\Organizations\Create.cshtml" />
-    <Content Include="Views\Organizations\Delete.cshtml" />
-    <Content Include="Views\Organizations\Details.cshtml" />
-    <Content Include="Views\Organizations\Edit.cshtml" />
-    <Content Include="Views\Organizations\Index.cshtml" />
-    <Content Include="Views\Shared\_ViewStart.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\HealthPlans\Create.cshtml" />
     <Content Include="Views\HealthPlans\Delete.cshtml" />
     <Content Include="Views\HealthPlans\Details.cshtml" />
     <Content Include="Views\HealthPlans\Edit.cshtml" />
     <Content Include="Views\HealthPlans\Index.cshtml" />
-    <Content Include="Views\Deductibles\Create.cshtml" />
-    <Content Include="Views\Deductibles\Delete.cshtml" />
-    <Content Include="Views\Deductibles\Details.cshtml" />
-    <Content Include="Views\Deductibles\Edit.cshtml" />
-    <Content Include="Views\Deductibles\Index.cshtml" />
     <Content Include="Views\PreventiveCares\Create.cshtml" />
     <Content Include="Views\PreventiveCares\Delete.cshtml" />
     <Content Include="Views\PreventiveCares\Details.cshtml" />
     <Content Include="Views\PreventiveCares\Edit.cshtml" />
     <Content Include="Views\PreventiveCares\Index.cshtml" />
+    <Content Include="Views\Deductibles\Create.cshtml" />
+    <Content Include="Views\Deductibles\Delete.cshtml" />
+    <Content Include="Views\Deductibles\Details.cshtml" />
+    <Content Include="Views\Deductibles\Edit.cshtml" />
+    <Content Include="Views\Deductibles\Index.cshtml" />
     <Content Include="Views\MajorMedicals\Create.cshtml" />
     <Content Include="Views\MajorMedicals\Delete.cshtml" />
     <Content Include="Views\MajorMedicals\Details.cshtml" />
     <Content Include="Views\MajorMedicals\Edit.cshtml" />
     <Content Include="Views\MajorMedicals\Index.cshtml" />
+    <Content Include="Views\Organizations\Create.cshtml" />
+    <Content Include="Views\Organizations\Delete.cshtml" />
+    <Content Include="Views\Organizations\Details.cshtml" />
+    <Content Include="Views\Organizations\Edit.cshtml" />
+    <Content Include="Views\Organizations\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

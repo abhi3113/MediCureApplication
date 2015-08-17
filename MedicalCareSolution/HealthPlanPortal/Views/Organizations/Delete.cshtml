@@ -1,92 +1,96 @@
 ﻿@model HealthPlanPortal.Models.Organization
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Delete";
 }
 
-<!DOCTYPE html>
+<h2>Delete</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
-</head>
-<body>
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
-        <h4>Organization</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.OrganizationName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.OrganizationName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.OrganizationDescription)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.OrganizationDescription)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.OrganizationEmailAddress)
-            </dt>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Organization</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationCode)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.OrganizationEmailAddress)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationCode)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.OrganizationPhoneNumber)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.OrganizationPhoneNumber)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.OrganizationAddress)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.OrganizationAddress)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.OrganizationCity)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationName)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.OrganizationCity)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.OrganizationState)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationName)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.OrganizationState)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.OrganizationZip)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationDescription)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.OrganizationZip)
-            </dd>
-    
-        </dl>
-    
-        @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
-    
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-        }
-    </div>
-</body>
-</html>
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationEmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationEmailAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationZip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationZip)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

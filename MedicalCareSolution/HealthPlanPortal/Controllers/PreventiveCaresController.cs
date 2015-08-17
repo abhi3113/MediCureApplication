@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,19 +15,19 @@ namespace HealthPlanPortal.Controllers
         private HealthPlanDBEntities db = new HealthPlanDBEntities();
 
         // GET: PreventiveCares
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.PreventiveCares.ToListAsync());
+            return View(db.PreventiveCares.ToList());
         }
 
         // GET: PreventiveCares/Details/5
-        public async Task<ActionResult> Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PreventiveCare preventiveCare = await db.PreventiveCares.FindAsync(id);
+            PreventiveCare preventiveCare = db.PreventiveCares.Find(id);
             if (preventiveCare == null)
             {
                 return HttpNotFound();
@@ -47,12 +46,12 @@ namespace HealthPlanPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "PreventiveCareId,PhysicalExamLimit,RoutinePediatricCareLimit,ImmunizationLimit")] PreventiveCare preventiveCare)
+        public ActionResult Create([Bind(Include = "PreventiveCareId,PhysicalExamLimit,RoutinePediatricCareLimit,ImmunizationLimit")] PreventiveCare preventiveCare)
         {
             if (ModelState.IsValid)
             {
                 db.PreventiveCares.Add(preventiveCare);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -60,13 +59,13 @@ namespace HealthPlanPortal.Controllers
         }
 
         // GET: PreventiveCares/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PreventiveCare preventiveCare = await db.PreventiveCares.FindAsync(id);
+            PreventiveCare preventiveCare = db.PreventiveCares.Find(id);
             if (preventiveCare == null)
             {
                 return HttpNotFound();
@@ -79,25 +78,25 @@ namespace HealthPlanPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "PreventiveCareId,PhysicalExamLimit,RoutinePediatricCareLimit,ImmunizationLimit")] PreventiveCare preventiveCare)
+        public ActionResult Edit([Bind(Include = "PreventiveCareId,PhysicalExamLimit,RoutinePediatricCareLimit,ImmunizationLimit")] PreventiveCare preventiveCare)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(preventiveCare).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(preventiveCare);
         }
 
         // GET: PreventiveCares/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PreventiveCare preventiveCare = await db.PreventiveCares.FindAsync(id);
+            PreventiveCare preventiveCare = db.PreventiveCares.Find(id);
             if (preventiveCare == null)
             {
                 return HttpNotFound();
@@ -108,11 +107,11 @@ namespace HealthPlanPortal.Controllers
         // POST: PreventiveCares/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            PreventiveCare preventiveCare = await db.PreventiveCares.FindAsync(id);
+            PreventiveCare preventiveCare = db.PreventiveCares.Find(id);
             db.PreventiveCares.Remove(preventiveCare);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

@@ -27,9 +27,10 @@ namespace HealthPlanPortal.Models
     
         public virtual DbSet<Deductible> Deductibles { get; set; }
         public virtual DbSet<HealthPlan> HealthPlans { get; set; }
+        public virtual DbSet<HealthPlanDetail> HealthPlanDetails { get; set; }
+        public virtual DbSet<LoginUser> LoginUsers { get; set; }
         public virtual DbSet<MajorMedical> MajorMedicals { get; set; }
         public virtual DbSet<Organization> Organizations { get; set; }
         public virtual DbSet<PreventiveCare> PreventiveCares { get; set; }
-        public virtual DbSet<LoginUser> LoginUsers { get; set; }
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,19 +15,19 @@ namespace HealthPlanPortal.Controllers
         private HealthPlanDBEntities db = new HealthPlanDBEntities();
 
         // GET: MajorMedicals
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.MajorMedicals.ToListAsync());
+            return View(db.MajorMedicals.ToList());
         }
 
         // GET: MajorMedicals/Details/5
-        public async Task<ActionResult> Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MajorMedical majorMedical = await db.MajorMedicals.FindAsync(id);
+            MajorMedical majorMedical = db.MajorMedicals.Find(id);
             if (majorMedical == null)
             {
                 return HttpNotFound();
@@ -47,12 +46,12 @@ namespace HealthPlanPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "MajorMedicalId,MajorMedicalProvideListBool,MajorMedicalDescription")] MajorMedical majorMedical)
+        public ActionResult Create([Bind(Include = "MajorMedicalId,MajorMedicalProvideListBool,MajorMedicalDescription")] MajorMedical majorMedical)
         {
             if (ModelState.IsValid)
             {
                 db.MajorMedicals.Add(majorMedical);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -60,13 +59,13 @@ namespace HealthPlanPortal.Controllers
         }
 
         // GET: MajorMedicals/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MajorMedical majorMedical = await db.MajorMedicals.FindAsync(id);
+            MajorMedical majorMedical = db.MajorMedicals.Find(id);
             if (majorMedical == null)
             {
                 return HttpNotFound();
@@ -79,25 +78,25 @@ namespace HealthPlanPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "MajorMedicalId,MajorMedicalProvideListBool,MajorMedicalDescription")] MajorMedical majorMedical)
+        public ActionResult Edit([Bind(Include = "MajorMedicalId,MajorMedicalProvideListBool,MajorMedicalDescription")] MajorMedical majorMedical)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(majorMedical).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(majorMedical);
         }
 
         // GET: MajorMedicals/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MajorMedical majorMedical = await db.MajorMedicals.FindAsync(id);
+            MajorMedical majorMedical = db.MajorMedicals.Find(id);
             if (majorMedical == null)
             {
                 return HttpNotFound();
@@ -108,11 +107,11 @@ namespace HealthPlanPortal.Controllers
         // POST: MajorMedicals/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            MajorMedical majorMedical = await db.MajorMedicals.FindAsync(id);
+            MajorMedical majorMedical = db.MajorMedicals.Find(id);
             db.MajorMedicals.Remove(majorMedical);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

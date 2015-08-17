@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,19 +15,19 @@ namespace HealthPlanPortal.Controllers
         private HealthPlanDBEntities db = new HealthPlanDBEntities();
 
         // GET: Deductibles
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.Deductibles.ToListAsync());
+            return View(db.Deductibles.ToList());
         }
 
         // GET: Deductibles/Details/5
-        public async Task<ActionResult> Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Deductible deductible = await db.Deductibles.FindAsync(id);
+            Deductible deductible = db.Deductibles.Find(id);
             if (deductible == null)
             {
                 return HttpNotFound();
@@ -47,12 +46,12 @@ namespace HealthPlanPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "DeductibleId,DeductibleCode,IndividualDedAmt,FamilyDedAmt,MaxDeductibleAmountPerIndividual,ServicesCoveredBeforeDeductibleMetBool,DeductibleIncdInOutOfPcktBool,AnnualLimitsPlanBool,AnnualPremium,CoinsuranceUpper,CoinsuranceLower,AnnualLimitHigher,AnnualLimitLower,TotalEstimatedCost")] Deductible deductible)
+        public ActionResult Create([Bind(Include = "DeductibleId,DeductibleCode,IndividualDedAmt,FamilyDedAmt,MaxDeductibleAmountPerIndividual,ServicesCoveredBeforeDeductibleMetBool,DeductibleIncdInOutOfPcktBool,AnnualLimitsPlanBool,AnnualPremium,CoinsuranceUpper,CoinsuranceLower,AnnualLimitHigher,AnnualLimitLower,TotalEstimatedCost")] Deductible deductible)
         {
             if (ModelState.IsValid)
             {
                 db.Deductibles.Add(deductible);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -60,13 +59,13 @@ namespace HealthPlanPortal.Controllers
         }
 
         // GET: Deductibles/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Deductible deductible = await db.Deductibles.FindAsync(id);
+            Deductible deductible = db.Deductibles.Find(id);
             if (deductible == null)
             {
                 return HttpNotFound();
@@ -79,25 +78,25 @@ namespace HealthPlanPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "DeductibleId,DeductibleCode,IndividualDedAmt,FamilyDedAmt,MaxDeductibleAmountPerIndividual,ServicesCoveredBeforeDeductibleMetBool,DeductibleIncdInOutOfPcktBool,AnnualLimitsPlanBool,AnnualPremium,CoinsuranceUpper,CoinsuranceLower,AnnualLimitHigher,AnnualLimitLower,TotalEstimatedCost")] Deductible deductible)
+        public ActionResult Edit([Bind(Include = "DeductibleId,DeductibleCode,IndividualDedAmt,FamilyDedAmt,MaxDeductibleAmountPerIndividual,ServicesCoveredBeforeDeductibleMetBool,DeductibleIncdInOutOfPcktBool,AnnualLimitsPlanBool,AnnualPremium,CoinsuranceUpper,CoinsuranceLower,AnnualLimitHigher,AnnualLimitLower,TotalEstimatedCost")] Deductible deductible)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(deductible).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(deductible);
         }
 
         // GET: Deductibles/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Deductible deductible = await db.Deductibles.FindAsync(id);
+            Deductible deductible = db.Deductibles.Find(id);
             if (deductible == null)
             {
                 return HttpNotFound();
@@ -108,11 +107,11 @@ namespace HealthPlanPortal.Controllers
         // POST: Deductibles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Deductible deductible = await db.Deductibles.FindAsync(id);
+            Deductible deductible = db.Deductibles.Find(id);
             db.Deductibles.Remove(deductible);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

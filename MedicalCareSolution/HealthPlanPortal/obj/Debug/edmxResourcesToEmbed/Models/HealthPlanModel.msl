@@ -27,11 +27,29 @@
           <ScalarProperty Name="HealthPlanId" ColumnName="HealthPlanId" />
           <ScalarProperty Name="HealthPlanCode" ColumnName="HealthPlanCode" />
           <ScalarProperty Name="HealthPlanDescription" ColumnName="HealthPlanDescription" />
+          <ScalarProperty Name="PCPrequiredBool" ColumnName="PCPrequiredBool" />
+          <ScalarProperty Name="PCPNetworkBool" ColumnName="PCPNetworkBool" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HealthPlanDetails">
+      <EntityTypeMapping TypeName="HealthPlanDBModel.HealthPlanDetail">
+        <MappingFragment StoreEntitySet="HealthPlanDetails">
+          <ScalarProperty Name="HealthPlanDetailsId" ColumnName="HealthPlanDetailsId" />
+          <ScalarProperty Name="HealthPlanId" ColumnName="HealthPlanId" />
           <ScalarProperty Name="DeductibleId" ColumnName="DeductibleId" />
           <ScalarProperty Name="PreventiveCareId" ColumnName="PreventiveCareId" />
           <ScalarProperty Name="MajorMedicalId" ColumnName="MajorMedicalId" />
-          <ScalarProperty Name="PCPrequiredBool" ColumnName="PCPrequiredBool" />
-          <ScalarProperty Name="PCPNetworkBool" ColumnName="PCPNetworkBool" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginUsers">
+      <EntityTypeMapping TypeName="HealthPlanDBModel.LoginUser">
+        <MappingFragment StoreEntitySet="LoginUser">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -47,15 +65,16 @@
     <EntitySetMapping Name="Organizations">
       <EntityTypeMapping TypeName="HealthPlanDBModel.Organization">
         <MappingFragment StoreEntitySet="Organization">
-          <ScalarProperty Name="OrganizationZip" ColumnName="OrganizationZip" />
-          <ScalarProperty Name="OrganizationState" ColumnName="OrganizationState" />
-          <ScalarProperty Name="OrganizationCity" ColumnName="OrganizationCity" />
-          <ScalarProperty Name="OrganizationAddress" ColumnName="OrganizationAddress" />
-          <ScalarProperty Name="OrganizationEmailAddress" ColumnName="OrganizationEmailAddress" />
-          <ScalarProperty Name="Organization_Id" ColumnName="Organization Id" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="OrganizationCode" ColumnName="OrganizationCode" />
           <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
           <ScalarProperty Name="OrganizationDescription" ColumnName="OrganizationDescription" />
           <ScalarProperty Name="OrganizationPhoneNumber" ColumnName="OrganizationPhoneNumber" />
+          <ScalarProperty Name="OrganizationEmailAddress" ColumnName="OrganizationEmailAddress" />
+          <ScalarProperty Name="OrganizationAddress" ColumnName="OrganizationAddress" />
+          <ScalarProperty Name="OrganizationCity" ColumnName="OrganizationCity" />
+          <ScalarProperty Name="OrganizationState" ColumnName="OrganizationState" />
+          <ScalarProperty Name="OrganizationZip" ColumnName="OrganizationZip" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -66,16 +85,6 @@
           <ScalarProperty Name="PhysicalExamLimit" ColumnName="PhysicalExamLimit" />
           <ScalarProperty Name="RoutinePediatricCareLimit" ColumnName="RoutinePediatricCareLimit" />
           <ScalarProperty Name="ImmunizationLimit" ColumnName="ImmunizationLimit" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="LoginUsers">
-      <EntityTypeMapping TypeName="HealthPlanDBModel.LoginUser">
-        <MappingFragment StoreEntitySet="LoginUser">
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="FullName" ColumnName="FullName" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

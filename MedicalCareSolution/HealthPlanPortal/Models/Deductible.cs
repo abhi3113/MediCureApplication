@@ -11,31 +11,45 @@ namespace HealthPlanPortal.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Deductible
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Deductible()
         {
-            this.HealthPlans = new HashSet<HealthPlan>();
+            this.HealthPlanDetails = new HashSet<HealthPlanDetail>();
         }
-    
-        public string DeductibleId { get; set; }
+        [Display(Name = "Deductible ID")]
+        public int DeductibleId { get; set; }
+        [Display(Name = "Deductible Code")]
         public string DeductibleCode { get; set; }
+        [Display(Name = "Individual Deductible amount")]
         public Nullable<decimal> IndividualDedAmt { get; set; }
+        [Display(Name = "Family Deductible Amount")]
         public Nullable<decimal> FamilyDedAmt { get; set; }
+        [Display(Name = "Max Deductible Amount Per Individual")]
         public Nullable<decimal> MaxDeductibleAmountPerIndividual { get; set; }
+        [Display(Name = "Any Services Covered Before the deductibles met?")]
         public Nullable<bool> ServicesCoveredBeforeDeductibleMetBool { get; set; }
+        [Display(Name = "Is the deductible Included in Out of packet?")]
         public Nullable<bool> DeductibleIncdInOutOfPcktBool { get; set; }
+        [Display(Name = "Does the plans have annual Limits?")]
         public Nullable<bool> AnnualLimitsPlanBool { get; set; }
+        [Display(Name = "If So what is the annual Limit?")]
         public Nullable<decimal> AnnualPremium { get; set; }
+        [Display(Name = "Coinsurance Upper Limit?")]
         public Nullable<decimal> CoinsuranceUpper { get; set; }
+        [Display(Name = "Coinsurance Lower Limit?")]
         public Nullable<decimal> CoinsuranceLower { get; set; }
+        [Display(Name = "Annual Limi Higher?")]
         public Nullable<decimal> AnnualLimitHigher { get; set; }
+        [Display(Name = "Annual Limit Lower?")]
         public Nullable<decimal> AnnualLimitLower { get; set; }
+        [Display(Name = "Total Estimated Cost?")]
         public Nullable<decimal> TotalEstimatedCost { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HealthPlan> HealthPlans { get; set; }
+        public virtual ICollection<HealthPlanDetail> HealthPlanDetails { get; set; }
     }
 }

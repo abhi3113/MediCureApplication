@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,20 +15,19 @@ namespace HealthPlanPortal.Controllers
         private HealthPlanDBEntities db = new HealthPlanDBEntities();
 
         // GET: HealthPlans
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var healthPlans = db.HealthPlans.Include(h => h.Deductible).Include(h => h.MajorMedical).Include(h => h.PreventiveCare);
-            return View(await healthPlans.ToListAsync());
+            return View(db.HealthPlans.ToList());
         }
 
         // GET: HealthPlans/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HealthPlan healthPlan = await db.HealthPlans.FindAsync(id);
+            HealthPlan healthPlan = db.HealthPlans.Find(id);
             if (healthPlan == null)
             {
                 return HttpNotFound();
@@ -40,9 +38,6 @@ namespace HealthPlanPortal.Controllers
         // GET: HealthPlans/Create
         public ActionResult Create()
         {
-            ViewBag.DeductibleId = new SelectList(db.Deductibles, "DeductibleId", "DeductibleCode");
-            ViewBag.MajorMedicalId = new SelectList(db.MajorMedicals, "MajorMedicalId", "MajorMedicalDescription");
-            ViewBag.PreventiveCareId = new SelectList(db.PreventiveCares, "PreventiveCareId", "PreventiveCareId");
             return View();
         }
 
@@ -51,36 +46,30 @@ namespace HealthPlanPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "HealthPlanId,HealthPlanCode,HealthPlanDescription,DeductibleId,PreventiveCareId,MajorMedicalId,PCPrequiredBool,PCPNetworkBool")] HealthPlan healthPlan)
+        public ActionResult Create([Bind(Include = "HealthPlanId,HealthPlanCode,HealthPlanDescription,PCPrequiredBool,PCPNetworkBool")] HealthPlan healthPlan)
         {
             if (ModelState.IsValid)
             {
                 db.HealthPlans.Add(healthPlan);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DeductibleId = new SelectList(db.Deductibles, "DeductibleId", "DeductibleCode", healthPlan.DeductibleId);
-            ViewBag.MajorMedicalId = new SelectList(db.MajorMedicals, "MajorMedicalId", "MajorMedicalDescription", healthPlan.MajorMedicalId);
-            ViewBag.PreventiveCareId = new SelectList(db.PreventiveCares, "PreventiveCareId", "PreventiveCareId", healthPlan.PreventiveCareId);
             return View(healthPlan);
         }
 
         // GET: HealthPlans/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HealthPlan healthPlan = await db.HealthPlans.FindAsync(id);
+            HealthPlan healthPlan = db.HealthPlans.Find(id);
             if (healthPlan == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DeductibleId = new SelectList(db.Deductibles, "DeductibleId", "DeductibleCode", healthPlan.DeductibleId);
-            ViewBag.MajorMedicalId = new SelectList(db.MajorMedicals, "MajorMedicalId", "MajorMedicalDescription", healthPlan.MajorMedicalId);
-            ViewBag.PreventiveCareId = new SelectList(db.PreventiveCares, "PreventiveCareId", "PreventiveCareId", healthPlan.PreventiveCareId);
             return View(healthPlan);
         }
 
@@ -89,28 +78,25 @@ namespace HealthPlanPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "HealthPlanId,HealthPlanCode,HealthPlanDescription,DeductibleId,PreventiveCareId,MajorMedicalId,PCPrequiredBool,PCPNetworkBool")] HealthPlan healthPlan)
+        public ActionResult Edit([Bind(Include = "HealthPlanId,HealthPlanCode,HealthPlanDescription,PCPrequiredBool,PCPNetworkBool")] HealthPlan healthPlan)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(healthPlan).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DeductibleId = new SelectList(db.Deductibles, "DeductibleId", "DeductibleCode", healthPlan.DeductibleId);
-            ViewBag.MajorMedicalId = new SelectList(db.MajorMedicals, "MajorMedicalId", "MajorMedicalDescription", healthPlan.MajorMedicalId);
-            ViewBag.PreventiveCareId = new SelectList(db.PreventiveCares, "PreventiveCareId", "PreventiveCareId", healthPlan.PreventiveCareId);
             return View(healthPlan);
         }
 
         // GET: HealthPlans/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HealthPlan healthPlan = await db.HealthPlans.FindAsync(id);
+            HealthPlan healthPlan = db.HealthPlans.Find(id);
             if (healthPlan == null)
             {
                 return HttpNotFound();
@@ -121,11 +107,11 @@ namespace HealthPlanPortal.Controllers
         // POST: HealthPlans/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            HealthPlan healthPlan = await db.HealthPlans.FindAsync(id);
+            HealthPlan healthPlan = db.HealthPlans.Find(id);
             db.HealthPlans.Remove(healthPlan);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

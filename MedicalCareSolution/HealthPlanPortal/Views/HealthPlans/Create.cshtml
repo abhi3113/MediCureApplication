@@ -1,95 +1,67 @@
 ﻿@model HealthPlanPortal.Models.HealthPlan
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Create";
+    
 }
 
-<!DOCTYPE html>
+<h2>Create</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
-    @using (Html.BeginForm()) 
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>HealthPlan</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.HealthPlanCode, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.HealthPlanCode, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HealthPlanCode, "", new { @class = "text-danger" })
-                </div>
-            </div>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
     
-            <div class="form-group">
-                @Html.LabelFor(model => model.HealthPlanDescription, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.HealthPlanDescription, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HealthPlanDescription, "", new { @class = "text-danger" })
-                </div>
+    <div class="form-horizontal">
+        <h4>HealthPlan</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.HealthPlanCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HealthPlanCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HealthPlanCode, "", new { @class = "text-danger" })
             </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.DeductibleId, "DeductibleId", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("DeductibleId", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.DeductibleId, "", new { @class = "text-danger" })
-                </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HealthPlanDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HealthPlanDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HealthPlanDescription, "", new { @class = "text-danger" })
             </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.PreventiveCareId, "PreventiveCareId", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("PreventiveCareId", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.PreventiveCareId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.MajorMedicalId, "MajorMedicalId", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("MajorMedicalId", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.MajorMedicalId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.PCPrequiredBool, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.PCPrequiredBool)
-                        @Html.ValidationMessageFor(model => model.PCPrequiredBool, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.PCPNetworkBool, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.PCPNetworkBool)
-                        @Html.ValidationMessageFor(model => model.PCPNetworkBool, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PCPrequiredBool, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.PCPrequiredBool)
+                    @Html.ValidationMessageFor(model => model.PCPrequiredBool, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PCPNetworkBool, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.PCPNetworkBool)
+                    @Html.ValidationMessageFor(model => model.PCPNetworkBool, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
     </div>
-</body>
-</html>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

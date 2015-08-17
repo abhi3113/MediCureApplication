@@ -11,20 +11,23 @@ namespace HealthPlanPortal.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class MajorMedical
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MajorMedical()
         {
-            this.HealthPlans = new HashSet<HealthPlan>();
+            this.HealthPlanDetails = new HashSet<HealthPlanDetail>();
         }
-    
-        public string MajorMedicalId { get; set; }
+        [Display(Name = "Major Medical Id")]
+        public int MajorMedicalId { get; set; }
+        [Display(Name ="Do you have copy of the Plans Provider list?")]
         public Nullable<bool> MajorMedicalProvideListBool { get; set; }
+        [Display(Name = "MajorMedical Description")]
         public string MajorMedicalDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HealthPlan> HealthPlans { get; set; }
+        public virtual ICollection<HealthPlanDetail> HealthPlanDetails { get; set; }
     }
 }

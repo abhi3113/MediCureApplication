@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,19 +15,19 @@ namespace HealthPlanPortal.Controllers
         private HealthPlanDBEntities db = new HealthPlanDBEntities();
 
         // GET: Organizations
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.Organizations.ToListAsync());
+            return View(db.Organizations.ToList());
         }
 
         // GET: Organizations/Details/5
-        public async Task<ActionResult> Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organization organization = await db.Organizations.FindAsync(id);
+            Organization organization = db.Organizations.Find(id);
             if (organization == null)
             {
                 return HttpNotFound();
@@ -47,12 +46,12 @@ namespace HealthPlanPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Organization_Id,OrganizationName,OrganizationDescription,OrganizationPhoneNumber,OrganizationAddressId")] Organization organization)
+        public ActionResult Create([Bind(Include = "OrganizationId,OrganizationCode,OrganizationName,OrganizationDescription,OrganizationPhoneNumber,OrganizationEmailAddress,OrganizationAddress,OrganizationCity,OrganizationState,OrganizationZip")] Organization organization)
         {
             if (ModelState.IsValid)
             {
                 db.Organizations.Add(organization);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -60,13 +59,13 @@ namespace HealthPlanPortal.Controllers
         }
 
         // GET: Organizations/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organization organization = await db.Organizations.FindAsync(id);
+            Organization organization = db.Organizations.Find(id);
             if (organization == null)
             {
                 return HttpNotFound();
@@ -79,25 +78,25 @@ namespace HealthPlanPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Organization_Id,OrganizationName,OrganizationDescription,OrganizationPhoneNumber,OrganizationAddressId")] Organization organization)
+        public ActionResult Edit([Bind(Include = "OrganizationId,OrganizationCode,OrganizationName,OrganizationDescription,OrganizationPhoneNumber,OrganizationEmailAddress,OrganizationAddress,OrganizationCity,OrganizationState,OrganizationZip")] Organization organization)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(organization).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(organization);
         }
 
         // GET: Organizations/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organization organization = await db.Organizations.FindAsync(id);
+            Organization organization = db.Organizations.Find(id);
             if (organization == null)
             {
                 return HttpNotFound();
@@ -108,11 +107,11 @@ namespace HealthPlanPortal.Controllers
         // POST: Organizations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Organization organization = await db.Organizations.FindAsync(id);
+            Organization organization = db.Organizations.Find(id);
             db.Organizations.Remove(organization);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

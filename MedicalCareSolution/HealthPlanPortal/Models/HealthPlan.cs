@@ -11,20 +11,27 @@ namespace HealthPlanPortal.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class HealthPlan
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public HealthPlan()
+        {
+            this.HealthPlanDetails = new HashSet<HealthPlanDetail>();
+        }
+        
         public int HealthPlanId { get; set; }
+        [Display(Name = "Plan Type")]
         public string HealthPlanCode { get; set; }
+        [Display(Name = "Plan Description")]
         public string HealthPlanDescription { get; set; }
-        public string DeductibleId { get; set; }
-        public string PreventiveCareId { get; set; }
-        public string MajorMedicalId { get; set; }
+        [Display(Name = "Required PCP?")]
         public Nullable<bool> PCPrequiredBool { get; set; }
+        [Display(Name = "Does your PCP InNetwork")]
         public Nullable<bool> PCPNetworkBool { get; set; }
     
-        public virtual Deductible Deductible { get; set; }
-        public virtual MajorMedical MajorMedical { get; set; }
-        public virtual PreventiveCare PreventiveCare { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HealthPlanDetail> HealthPlanDetails { get; set; }
     }
 }
