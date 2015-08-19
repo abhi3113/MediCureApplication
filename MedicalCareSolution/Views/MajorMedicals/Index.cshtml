@@ -1,0 +1,43 @@
+﻿@model IEnumerable<HealthPlanPortal.Models.MajorMedical>
+
+@{
+    ViewBag.Title = "Major Medical";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<form>
+    <fieldset>
+        <legend>Major Medical:</legend>
+        <table class="table" border="1" style="font-family:Arial" cellspacing="5" cellpadding="5">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MajorMedicalProvideListBool)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MajorMedicalDescription)
+                </th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ValueFor(modelItem => item.MajorMedicalProvideListBool)
+                    </td>
+                    <td>
+                        @Html.ValueFor(modelItem => item.MajorMedicalDescription)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.MajorMedicalId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.MajorMedicalId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.MajorMedicalId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </fieldset>
+</form>

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<HealthPlanPortal.Models.HealthPlan>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Health Plan";
+}
+<br />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>Health Plan:</p>
+@using (Html.BeginForm("Index", "HealthPlans", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+<table class="table" border="1" style="font-family:Arial" cellspacing="5" cellpadding="5">
+    <tr>
+        <th>
+            @Html.ActionLink("Plan Type", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HealthPlanDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PCPrequiredBool)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PCPNetworkBool)
+        </th>
+        <th>Action Links</th>
+    </tr>
+
+    @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.ValueFor(modelItem => item.HealthPlanCode)
+            </td>
+            <td>
+                @Html.ValueFor(modelItem => item.HealthPlanDescription)
+            </td>
+            <td>
+                @Html.ValueFor(modelItem => item.PCPrequiredBool)
+            </td>
+            <td>
+                @Html.ValueFor(modelItem => item.PCPNetworkBool)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.HealthPlanId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.HealthPlanId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.HealthPlanId })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+
+@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
