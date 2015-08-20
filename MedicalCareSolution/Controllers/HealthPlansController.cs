@@ -40,27 +40,27 @@ namespace HealthPlanPortal.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var students = from s in db.HealthPlans
+            var HealthPlan = from s in db.HealthPlans
                            select s;
             if (!String.IsNullOrEmpty(searchString))
             {
-                students = students.Where(s => s.HealthPlanCode.Contains(searchString)
+                HealthPlan = HealthPlan.Where(s => s.HealthPlanCode.Contains(searchString)
                                        || s.HealthPlanCode.Contains(searchString));
             }
             switch (sortOrder)
             {
                 case "name_desc":
-                    students = students.OrderByDescending(s => s.HealthPlanCode);
+                    HealthPlan = HealthPlan.OrderByDescending(s => s.HealthPlanCode);
                     break;
 
                 default:  // Name ascending 
-                    students = students.OrderBy(s => s.HealthPlanCode);
+                    HealthPlan = HealthPlan.OrderBy(s => s.HealthPlanCode);
                     break;
             }
 
             //int pageSize = 3;
             //int pageNumber = (page ?? 1);
-            return View(students);
+            return View(HealthPlan);
         }
 
         // GET: HealthPlans/Details/5

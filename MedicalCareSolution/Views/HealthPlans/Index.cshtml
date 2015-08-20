@@ -19,6 +19,9 @@
 <table class="table" border="1" style="font-family:Arial" cellspacing="5" cellpadding="5">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.HealthPlanId)
+        </th>
+        <th>
             @Html.ActionLink("Plan Type", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
@@ -36,6 +39,9 @@
     @foreach (var item in Model)
             {
         <tr>
+            <td>
+                @Html.ValueFor(modelItem => item.HealthPlanId)
+            </td>
             <td>
                 @Html.ValueFor(modelItem => item.HealthPlanCode)
             </td>
