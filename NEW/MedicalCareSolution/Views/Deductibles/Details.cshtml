@@ -1,0 +1,143 @@
+﻿@model HealthPlanPortal.Models.Deductible
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Deductible</h4>    
+    <table class="table" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HealthPlan.HealthPlanCode)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.HealthPlan.HealthPlanCode)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeductibleCode)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.DeductibleCode)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IndividualDedAmt)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.IndividualDedAmt)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FamilyDedAmt)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.FamilyDedAmt)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxDeductibleAmountPerIndividual)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.MaxDeductibleAmountPerIndividual)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ServicesCoveredBeforeDeductibleMetBool)
+            </th>
+
+            <td>
+                @Html.ValueFor(model => model.ServicesCoveredBeforeDeductibleMetBool)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeductibleIncdInOutOfPcktBool)
+            </th>
+
+            <td>
+                @Html.ValueFor(model => model.DeductibleIncdInOutOfPcktBool)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnualLimitsPlanBool)
+            </th>
+
+            <td>
+                @Html.ValueFor(model => model.AnnualLimitsPlanBool)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnualPremium)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.AnnualPremium)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CoinsuranceUpper)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.CoinsuranceUpper)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CoinsuranceLower)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.CoinsuranceLower)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnualLimitHigher)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.AnnualLimitHigher)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnualLimitLower)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.AnnualLimitLower)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalEstimatedCost)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.TotalEstimatedCost)
+            </td>
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DeductibleId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

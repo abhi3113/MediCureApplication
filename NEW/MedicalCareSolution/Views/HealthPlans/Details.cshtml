@@ -1,0 +1,53 @@
+﻿@model HealthPlanPortal.Models.HealthPlan
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Health Plan</h4>    
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HealthPlanCode)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.HealthPlanCode)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HealthPlanDescription)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.HealthPlanDescription)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PCPrequiredBool)
+            </th>
+
+            <td>
+                @Html.ValueFor(model => model.PCPrequiredBool)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PCPNetworkBool)
+            </th>
+
+            <td>
+                @Html.ValueFor(model => model.PCPNetworkBool)
+            </td>
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HealthPlanId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

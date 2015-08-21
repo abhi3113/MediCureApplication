@@ -1,0 +1,51 @@
+﻿@model IEnumerable<HealthPlanPortal.Models.PreventiveCare>
+
+@{
+    ViewBag.Title = "Preventive Care";
+}
+
+<h2>Preventive Care</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PhysicalExamLimit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoutinePediatricCareLimit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImmunizationLimit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HealthPlan.HealthPlanCode)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhysicalExamLimit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoutinePediatricCareLimit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImmunizationLimit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HealthPlan.HealthPlanCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PreventiveCareId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PreventiveCareId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PreventiveCareId })
+        </td>
+    </tr>
+}
+
+</table>

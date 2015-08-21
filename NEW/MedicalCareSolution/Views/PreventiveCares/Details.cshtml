@@ -1,0 +1,54 @@
+﻿@model HealthPlanPortal.Models.PreventiveCare
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Preventive Care</h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HealthPlan.HealthPlanCode)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.HealthPlan.HealthPlanCode)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PhysicalExamLimit)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.PhysicalExamLimit)
+            </td>
+        </tr>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.RoutinePediatricCareLimit)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.RoutinePediatricCareLimit)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImmunizationLimit)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.ImmunizationLimit)
+            </td>
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PreventiveCareId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

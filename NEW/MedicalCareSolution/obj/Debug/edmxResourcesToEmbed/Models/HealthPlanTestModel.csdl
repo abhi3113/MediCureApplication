@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HealthPlanDatabaseTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Deductible">
+    <Key>
+      <PropertyRef Name="DeductibleId" />
+    </Key>
+    <Property Name="DeductibleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HealthPlanId" Type="Int32" Nullable="false" />
+    <Property Name="DeductibleCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="IndividualDedAmt" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="FamilyDedAmt" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="MaxDeductibleAmountPerIndividual" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ServicesCoveredBeforeDeductibleMetBool" Type="Boolean" />
+    <Property Name="DeductibleIncdInOutOfPcktBool" Type="Boolean" />
+    <Property Name="AnnualLimitsPlanBool" Type="Boolean" />
+    <Property Name="AnnualPremium" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CoinsuranceUpper" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CoinsuranceLower" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="AnnualLimitHigher" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="AnnualLimitLower" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TotalEstimatedCost" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="HealthPlan" Relationship="Self.FK_Deductible_HealthPlan" FromRole="Deductible" ToRole="HealthPlan" />
+  </EntityType>
+  <EntityType Name="HealthPlan">
+    <Key>
+      <PropertyRef Name="HealthPlanId" />
+    </Key>
+    <Property Name="HealthPlanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HealthPlanCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="HealthPlanDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PCPrequiredBool" Type="Boolean" />
+    <Property Name="PCPNetworkBool" Type="Boolean" />
+    <NavigationProperty Name="Deductibles" Relationship="Self.FK_Deductible_HealthPlan" FromRole="HealthPlan" ToRole="Deductible" />
+    <Property Name="PreventiveCareId" Type="Int32" />
+    <Property Name="MajorMedicalId" Type="Int32" />
+    <NavigationProperty Name="MajorMedical" Relationship="HealthPlanDatabaseTestModel.FK_HealthPlan_MajorMedical" FromRole="HealthPlan" ToRole="MajorMedical" />
+    <NavigationProperty Name="PreventiveCare" Relationship="HealthPlanDatabaseTestModel.FK_HealthPlan_PreventiveCare" FromRole="HealthPlan" ToRole="PreventiveCare" />
+    <NavigationProperty Name="MajorMedicals" Relationship="HealthPlanDatabaseTestModel.FK_MajorMedical_HealthPlan" FromRole="HealthPlan" ToRole="MajorMedical" />
+    <NavigationProperty Name="PreventiveCares" Relationship="HealthPlanDatabaseTestModel.FK_PreventiveCare_HealthPlan" FromRole="HealthPlan" ToRole="PreventiveCare" />
+  </EntityType>
+  <Association Name="FK_Deductible_HealthPlan">
+    <End Role="HealthPlan" Type="Self.HealthPlan" Multiplicity="1" />
+    <End Role="Deductible" Type="Self.Deductible" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthPlan">
+        <PropertyRef Name="HealthPlanId" />
+      </Principal>
+      <Dependent Role="Deductible">
+        <PropertyRef Name="HealthPlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HealthPlanDatabaseTestEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Deductibles" EntityType="Self.Deductible" />
+    <EntitySet Name="HealthPlans" EntityType="Self.HealthPlan" />
+    <AssociationSet Name="FK_Deductible_HealthPlan" Association="Self.FK_Deductible_HealthPlan">
+      <End Role="HealthPlan" EntitySet="HealthPlans" />
+      <End Role="Deductible" EntitySet="Deductibles" />
+    </AssociationSet>
+    <EntitySet Name="MajorMedicals" EntityType="HealthPlanDatabaseTestModel.MajorMedical" />
+    <EntitySet Name="PreventiveCares" EntityType="HealthPlanDatabaseTestModel.PreventiveCare" />
+    <AssociationSet Name="FK_HealthPlan_MajorMedical" Association="HealthPlanDatabaseTestModel.FK_HealthPlan_MajorMedical">
+      <End Role="MajorMedical" EntitySet="MajorMedicals" />
+      <End Role="HealthPlan" EntitySet="HealthPlans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HealthPlan_PreventiveCare" Association="HealthPlanDatabaseTestModel.FK_HealthPlan_PreventiveCare">
+      <End Role="PreventiveCare" EntitySet="PreventiveCares" />
+      <End Role="HealthPlan" EntitySet="HealthPlans" />
+    </AssociationSet>
+    <EntitySet Name="LoginUsers" EntityType="HealthPlanDatabaseTestModel.LoginUser" />
+    <EntitySet Name="Organizations" EntityType="HealthPlanDatabaseTestModel.Organization" />
+    <AssociationSet Name="FK_MajorMedical_HealthPlan" Association="HealthPlanDatabaseTestModel.FK_MajorMedical_HealthPlan">
+      <End Role="HealthPlan" EntitySet="HealthPlans" />
+      <End Role="MajorMedical" EntitySet="MajorMedicals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PreventiveCare_HealthPlan" Association="HealthPlanDatabaseTestModel.FK_PreventiveCare_HealthPlan">
+      <End Role="HealthPlan" EntitySet="HealthPlans" />
+      <End Role="PreventiveCare" EntitySet="PreventiveCares" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="MajorMedical">
+    <Key>
+      <PropertyRef Name="MajorMedicalId" />
+    </Key>
+    <Property Name="MajorMedicalId" Type="Int32" Nullable="false" />
+    <Property Name="MajorMedicalProvideListBool" Type="Boolean" />
+    <Property Name="MajorMedicalDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HealthPlans" Relationship="HealthPlanDatabaseTestModel.FK_HealthPlan_MajorMedical" FromRole="MajorMedical" ToRole="HealthPlan" />
+    <Property Name="HealthPlanId" Type="Int32" />
+    <NavigationProperty Name="HealthPlan" Relationship="HealthPlanDatabaseTestModel.FK_MajorMedical_HealthPlan" FromRole="MajorMedical" ToRole="HealthPlan" />
+  </EntityType>
+  <EntityType Name="PreventiveCare">
+    <Key>
+      <PropertyRef Name="PreventiveCareId" />
+    </Key>
+    <Property Name="PreventiveCareId" Type="Int32" Nullable="false" />
+    <Property Name="PhysicalExamLimit" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="RoutinePediatricCareLimit" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ImmunizationLimit" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="HealthPlans" Relationship="HealthPlanDatabaseTestModel.FK_HealthPlan_PreventiveCare" FromRole="PreventiveCare" ToRole="HealthPlan" />
+    <Property Name="HealthPlanId" Type="Int32" />
+    <NavigationProperty Name="HealthPlan" Relationship="HealthPlanDatabaseTestModel.FK_PreventiveCare_HealthPlan" FromRole="PreventiveCare" ToRole="HealthPlan" />
+  </EntityType>
+  <Association Name="FK_HealthPlan_MajorMedical">
+    <End Type="HealthPlanDatabaseTestModel.MajorMedical" Role="MajorMedical" Multiplicity="0..1" />
+    <End Type="HealthPlanDatabaseTestModel.HealthPlan" Role="HealthPlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MajorMedical">
+        <PropertyRef Name="MajorMedicalId" />
+      </Principal>
+      <Dependent Role="HealthPlan">
+        <PropertyRef Name="MajorMedicalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HealthPlan_PreventiveCare">
+    <End Type="HealthPlanDatabaseTestModel.PreventiveCare" Role="PreventiveCare" Multiplicity="0..1" />
+    <End Type="HealthPlanDatabaseTestModel.HealthPlan" Role="HealthPlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PreventiveCare">
+        <PropertyRef Name="PreventiveCareId" />
+      </Principal>
+      <Dependent Role="HealthPlan">
+        <PropertyRef Name="PreventiveCareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LoginUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="OrganizationId" />
+    </Key>
+    <Property Name="OrganizationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrganizationCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="OrganizationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrganizationDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrganizationPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="OrganizationEmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrganizationAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrganizationCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrganizationState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrganizationZip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_MajorMedical_HealthPlan">
+    <End Type="HealthPlanDatabaseTestModel.HealthPlan" Role="HealthPlan" Multiplicity="0..1" />
+    <End Type="HealthPlanDatabaseTestModel.MajorMedical" Role="MajorMedical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthPlan">
+        <PropertyRef Name="HealthPlanId" />
+      </Principal>
+      <Dependent Role="MajorMedical">
+        <PropertyRef Name="HealthPlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PreventiveCare_HealthPlan">
+    <End Type="HealthPlanDatabaseTestModel.HealthPlan" Role="HealthPlan" Multiplicity="0..1" />
+    <End Type="HealthPlanDatabaseTestModel.PreventiveCare" Role="PreventiveCare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthPlan">
+        <PropertyRef Name="HealthPlanId" />
+      </Principal>
+      <Dependent Role="PreventiveCare">
+        <PropertyRef Name="HealthPlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
