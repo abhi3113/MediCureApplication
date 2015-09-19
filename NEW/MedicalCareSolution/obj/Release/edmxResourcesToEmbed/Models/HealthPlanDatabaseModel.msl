@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HealthPlanDatabaseModelStoreContainer" CdmEntityContainer="HealthPlanDatabaseEntities">
+    <EntitySetMapping Name="Deductibles">
+      <EntityTypeMapping TypeName="HealthPlanDatabaseModel.Deductible">
+        <MappingFragment StoreEntitySet="Deductible">
+          <ScalarProperty Name="DeductibleId" ColumnName="DeductibleId" />
+          <ScalarProperty Name="HealthPlanId" ColumnName="HealthPlanId" />
+          <ScalarProperty Name="DeductibleCode" ColumnName="DeductibleCode" />
+          <ScalarProperty Name="IndividualDedAmt" ColumnName="IndividualDedAmt" />
+          <ScalarProperty Name="FamilyDedAmt" ColumnName="FamilyDedAmt" />
+          <ScalarProperty Name="MaxDeductibleAmountPerIndividual" ColumnName="MaxDeductibleAmountPerIndividual" />
+          <ScalarProperty Name="ServicesCoveredBeforeDeductibleMetBool" ColumnName="ServicesCoveredBeforeDeductibleMetBool" />
+          <ScalarProperty Name="DeductibleIncdInOutOfPcktBool" ColumnName="DeductibleIncdInOutOfPcktBool" />
+          <ScalarProperty Name="AnnualLimitsPlanBool" ColumnName="AnnualLimitsPlanBool" />
+          <ScalarProperty Name="AnnualPremium" ColumnName="AnnualPremium" />
+          <ScalarProperty Name="CoinsuranceUpper" ColumnName="CoinsuranceUpper" />
+          <ScalarProperty Name="CoinsuranceLower" ColumnName="CoinsuranceLower" />
+          <ScalarProperty Name="AnnualLimitHigher" ColumnName="AnnualLimitHigher" />
+          <ScalarProperty Name="AnnualLimitLower" ColumnName="AnnualLimitLower" />
+          <ScalarProperty Name="TotalEstimatedCost" ColumnName="TotalEstimatedCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HealthPlans">
+      <EntityTypeMapping TypeName="HealthPlanDatabaseModel.HealthPlan">
+        <MappingFragment StoreEntitySet="HealthPlan">
+          <ScalarProperty Name="HealthPlanId" ColumnName="HealthPlanId" />
+          <ScalarProperty Name="HealthPlanCode" ColumnName="HealthPlanCode" />
+          <ScalarProperty Name="HealthPlanDescription" ColumnName="HealthPlanDescription" />
+          <ScalarProperty Name="PCPrequiredBool" ColumnName="PCPrequiredBool" />
+          <ScalarProperty Name="PCPNetworkBool" ColumnName="PCPNetworkBool" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginUsers">
+      <EntityTypeMapping TypeName="HealthPlanDatabaseModel.LoginUser">
+        <MappingFragment StoreEntitySet="LoginUser">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MajorMedicals">
+      <EntityTypeMapping TypeName="HealthPlanDatabaseModel.MajorMedical">
+        <MappingFragment StoreEntitySet="MajorMedical">
+          <ScalarProperty Name="MajorMedicalId" ColumnName="MajorMedicalId" />
+          <ScalarProperty Name="MajorMedicalProvideListBool" ColumnName="MajorMedicalProvideListBool" />
+          <ScalarProperty Name="MajorMedicalDescription" ColumnName="MajorMedicalDescription" />
+          <ScalarProperty Name="HealthPlanId" ColumnName="HealthPlanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organizations">
+      <EntityTypeMapping TypeName="HealthPlanDatabaseModel.Organization">
+        <MappingFragment StoreEntitySet="Organization">
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="OrganizationCode" ColumnName="OrganizationCode" />
+          <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+          <ScalarProperty Name="OrganizationDescription" ColumnName="OrganizationDescription" />
+          <ScalarProperty Name="OrganizationPhoneNumber" ColumnName="OrganizationPhoneNumber" />
+          <ScalarProperty Name="OrganizationEmailAddress" ColumnName="OrganizationEmailAddress" />
+          <ScalarProperty Name="OrganizationAddress" ColumnName="OrganizationAddress" />
+          <ScalarProperty Name="OrganizationCity" ColumnName="OrganizationCity" />
+          <ScalarProperty Name="OrganizationState" ColumnName="OrganizationState" />
+          <ScalarProperty Name="OrganizationZip" ColumnName="OrganizationZip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PreventiveCares">
+      <EntityTypeMapping TypeName="HealthPlanDatabaseModel.PreventiveCare">
+        <MappingFragment StoreEntitySet="PreventiveCare">
+          <ScalarProperty Name="PreventiveCareId" ColumnName="PreventiveCareId" />
+          <ScalarProperty Name="PhysicalExamLimit" ColumnName="PhysicalExamLimit" />
+          <ScalarProperty Name="RoutinePediatricCareLimit" ColumnName="RoutinePediatricCareLimit" />
+          <ScalarProperty Name="ImmunizationLimit" ColumnName="ImmunizationLimit" />
+          <ScalarProperty Name="HealthPlanId" ColumnName="HealthPlanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

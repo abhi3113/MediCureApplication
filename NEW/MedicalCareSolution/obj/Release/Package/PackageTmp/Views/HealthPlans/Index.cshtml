@@ -1,0 +1,51 @@
+﻿@model IEnumerable<HealthPlanPortal.Models.HealthPlan>
+
+@{
+    ViewBag.Title = "Health Plan";
+}
+
+<h2>Health Plan</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HealthPlanCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HealthPlanDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PCPrequiredBool)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PCPNetworkBool)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ValueFor(modelItem => item.HealthPlanCode)
+        </td>
+        <td>
+            @Html.ValueFor(modelItem => item.HealthPlanDescription)
+        </td>
+        <td>
+            @Html.ValueFor(modelItem => item.PCPrequiredBool)
+        </td>
+        <td>
+            @Html.ValueFor(modelItem => item.PCPNetworkBool)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HealthPlanId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HealthPlanId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HealthPlanId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,45 @@
+﻿@model HealthPlanPortal.Models.MajorMedical
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Major Medical</h4>
+    
+    <table class="table" border="1" style="width:80%">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HealthPlan.HealthPlanCode)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.HealthPlan.HealthPlanCode)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MajorMedicalProvideListBool)
+            </th>
+
+            <td>
+                @Html.ValueFor(model => model.MajorMedicalProvideListBool)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MajorMedicalDescription)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.MajorMedicalDescription)
+            </td>
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MajorMedicalId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

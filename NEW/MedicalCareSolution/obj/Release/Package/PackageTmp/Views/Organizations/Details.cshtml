@@ -1,0 +1,98 @@
+﻿@model HealthPlanPortal.Models.Organization
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Organization</h4>    
+    <table class="table" border="1" style="width:80%">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationCode)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.OrganizationCode)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationName)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.OrganizationName)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationDescription)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.OrganizationDescription)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationPhoneNumber)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.OrganizationPhoneNumber)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationEmailAddress)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.OrganizationEmailAddress)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationAddress)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.OrganizationAddress)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationCity)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.OrganizationCity)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationState)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.OrganizationState)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationZip)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.OrganizationZip)
+            </td>
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrganizationId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

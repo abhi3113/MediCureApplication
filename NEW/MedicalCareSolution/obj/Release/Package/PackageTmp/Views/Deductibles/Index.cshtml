@@ -1,0 +1,76 @@
+﻿@model IEnumerable<HealthPlanPortal.Models.Deductible>
+
+@{
+    ViewBag.Title = "Deductibles";
+}
+
+<h2>Deductibles</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DeductibleCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IndividualDedAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FamilyDedAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoinsuranceUpper)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoinsuranceLower)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnnualLimitHigher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnnualLimitLower)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HealthPlan.HealthPlanCode)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeductibleCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IndividualDedAmt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FamilyDedAmt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoinsuranceUpper)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoinsuranceLower)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnualLimitHigher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnualLimitLower)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.HealthPlan.HealthPlanCode)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DeductibleId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.DeductibleId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DeductibleId })
+            </td>
+        </tr>
+    }
+
+</table>
